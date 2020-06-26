@@ -1,33 +1,63 @@
 package com.petlams.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.fragment_new.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val firstFragment = FirstFragment
-        val secondFragment = SecondFragment
+        val firstFragment = NewFragment()
+        val secondFragment = SecondFragment()
+
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, FirstFragment)
+            replace(R.id.flFragment, firstFragment)
             commit()
         }
 
-        btnFragment1.setOnClickListener {
+        Fragment1.setOnClickListener {
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragment, FirstFragment)
+                replace(R.id.flFragment, firstFragment)
                 commit()
             }
 
-            btnFragment2.setOnClickListener {
+            Fragment2.setOnClickListener {
                 supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.flFragment, SecondFragment)
+                    replace(R.id.flFragment, secondFragment)
                     commit()
                 }
             }
         }
+
+        fun onStart() {
+            super.onStart()
+            Log.d("activity_lifecycle", " On start called")
+
+        }
+
+        fun onResume() {
+            super.onResume()
+            Log.d("activity_lifecycle", "On resume called")
+        }
+
+        fun onPause() {
+            super.onPause()
+            Log.d("activity_lifecycle", "On pasued called")
+        }
+
+        fun onStop() {
+            super.onStop()
+            Log.d("activity_lifecycle", "On stop called")
+        }
+
+        fun onDestroy() {
+            super.onDestroy()
+            Log.d("activity_lifecycle", "On destroy called")
+        }
     }
+
+}

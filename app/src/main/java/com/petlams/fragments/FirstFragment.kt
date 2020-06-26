@@ -40,7 +40,7 @@ class NewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FirstFragment.text = "HELLO"
+        firstFragment.text = "hello this is tap"
     }
 
     companion object {
